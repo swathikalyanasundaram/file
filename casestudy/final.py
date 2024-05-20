@@ -1,5 +1,5 @@
 import pyodbc
-from module import MainMenu
+from mainmenu import MainMenu
 
 if __name__ == "__main__":
     # Database connection details

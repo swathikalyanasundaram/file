@@ -8,9 +8,9 @@ class OrderProcessor:
     def create_order(self, user_id, product_ids):
         try:
             # Check if user exists
-            self.cursor.execute("SELECT * FROM [User] WHERE userId=?", (user_id,))
-            user = self.cursor.fetchone()
-            if not user:
+            self.cursor.execute("SELECT * FROM NewUser WHERE userId=?", (user_id,))
+            Newuser = self.cursor.fetchone()
+            if not Newuser:
                 raise Exception("UserNotFound")
 
             # Check if products exist and are in stock
@@ -69,22 +69,16 @@ class OrderProcessor:
 
     def create_user(self, user_data):
         try:
-            # Check if the user ID already exists
-            self.cursor.execute("SELECT userId FROM [User]")
-            existing_ids = [str(row[0]) for row in self.cursor.fetchall()]
-
-            if user_data['userId'] in existing_ids:
-                print("User ID already exists. Existing User IDs:", ", ".join(existing_ids))
-                return
-
-            # Insert user into database
-            self.cursor.execute("INSERT INTO [User] (userId, username, password, role) VALUES (?, ?, ?, ?)",
-                                (user_data['userId'], user_data['username'], user_data['password'], user_data['role']))
+        # Insert user into database
+            self.cursor.execute("INSERT INTO Newuser (username, password, role) VALUES (?, ?, ?)",
+                                (user_data['username'], user_data['password'], user_data['role']))
             self.conn.commit()
             print("User created successfully.")
         except Exception as e:
             self.conn.rollback()
             print("Error creating user:", str(e))
+
+           
 
     def get_all_products(self):
         try:
