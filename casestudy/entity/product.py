@@ -1,11 +1,11 @@
 class Product:
     def __init__(self, productId, productName, description, price, quantityInStock, type):
-        self.productId = productId
-        self.productName = productName
-        self.description = description
-        self.price = price
-        self.quantityInStock = quantityInStock
-        self.type = type
+        self.productId = None
+        self.productName = None
+        self.description = None
+        self.price = None
+        self.quantityInStock = None
+        self.type = None
 
     # Getters and setters
     def getProductId(self):
