@@ -2,7 +2,7 @@ from dao.orderprrocess import OrderProcessor
 from entity.user import User
 from entity.product import Product
 from entity.order import Order
-from exceptions import usernotfound,ordernotfound  
+from exception import UserNotFoundException,OrderNotFoundException
 
 class MainMenu:
     @staticmethod
